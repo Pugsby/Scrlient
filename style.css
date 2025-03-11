@@ -56,6 +56,12 @@ body {
     transform: translate(0, -1px) scale(2);
 }
 
+#announcementsContainer {
+    height: 260px;
+    overflow-x: visible;
+    padding-left: 20px;
+}
+
 #comments div {
     margin: auto;
     width: 50%;
@@ -76,6 +82,8 @@ body {
     border-radius: 16px;
     outline: 5px solid var(--text-color);
     outline-offset: 10px;
+    overflow-y: scroll;
+    height: 100%;
 }
 #mainHome {
     margin-left: 20px;
