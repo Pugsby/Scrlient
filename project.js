@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
+const turbowarpEnabled = urlParams.get('turbowarp');
 var author = "unknown"
 fetch(`https://trampoline.turbowarp.org/api/projects/${id}`)
     .then(response => response.json())
@@ -18,7 +19,7 @@ fetch(`https://trampoline.turbowarp.org/api/projects/${id}`)
         const iframe = document.getElementById('project');
         iframe.src = iframe.src.replace('{{id}}', id);
 
-        fetch(`https://corsproxy.io/?url=https://api.scratch.mit.edu/users/` + author + `/projects/1004783617/comments`)
+        fetch(`https://corsproxy.io/?url=https://api.scratch.mit.edu/users/${author}/projects/${id}/comments`)
         .then(response => response.json())
         .then(data => {
             const commentsContainer = document.getElementById('comments');
@@ -31,6 +32,9 @@ fetch(`https://trampoline.turbowarp.org/api/projects/${id}`)
             
         const iframe = document.getElementById('project');
         iframe.src = iframe.src.replace('{{id}}', id);
+        if (turbowarpEnabled) {
+            iframe.src = `https://turbowarp.org/${id}/embed`;
+        }
         })
         .catch(error => console.error('Error fetching data:', error));
     })

@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrlient Studio Viewer</title>
+    <title>Scrlient</title>
     <link rel="stylesheet" href="style.css">
-    <script src="frontpage.js"></script>
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
     <script src="global.js"></script>
+    <script src="search.js"></script>
 </head>
 <body>
-    <h1 id="name">Studio</h1>
+    <h2>Search</h2>
+    <input type="text" id="search" placeholder="Search" class="textInput">
+    <button onclick="search()" class="button">Search</button>
     <div id="projectList"></div>
 </body>
 </html>

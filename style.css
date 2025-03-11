@@ -1,12 +1,35 @@
 /* Global */
 
 body {
-    --bg-color: #2c2a2c;  /* A slightly lighter shade for better contrast */
-    --text-color: #9b59b6; /* A softer purple for readability */
-    --alt-text-color: #8e44ad; /* A more muted alternative text color */
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
+    transition: all 200ms;
+}
+
+.darkMode {
+    --bg-color: #2c2a2c;  /* A slightly lighter shade for better contrast */
+    --text-color: #9b59b6; /* A softer purple for readability */
+    --alt-text-color: #8e44ad; /* A more muted alternative text color */
+    --alt-bg-color: #3d3b3d; /* A slightly darker shade for better contrast */
+    --text-brightness: 1; /* A brighter image for better visibility */
+}
+
+.lightMode {
+    --bg-color: #e2e2e2;  /* A slightly darker shade for better contrast */
+    --text-color: #8953a8; /* A softer blue for readability */
+    --alt-text-color: #ad5dad; /* A more muted alternative text color */
+    --alt-bg-color: #d1d1d1; /* A slightly lighter shade for better contrast */
+    --text-brightness: -1; /* A normal image for better visibility */
+}
+
+#sidebar {
+    width: 48px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: var(--alt-bg-color);
 }
 
 #info {
@@ -26,6 +49,13 @@ body {
     padding: 10px;
 }
 
+.emoji {
+    margin: 0px;
+    margin-right: 8px;
+    margin-left: 8px;
+    transform: translate(0, -1px) scale(2);
+}
+
 #comments div {
     margin: auto;
     width: 50%;
@@ -35,15 +65,24 @@ body {
     outline-offset: 5px;
 }
 
+#contentThingy {
+    display: flex;
+}
+#contentThingy div {
+    display: block;
+    width: calc(100% - 64px);
+}
+#announcements {
+    border-radius: 16px;
+    outline: 5px solid var(--text-color);
+    outline-offset: 10px;
+}
+#mainHome {
+    margin-left: 20px;
+}
 a {
     color: var(--alt-text-color);
     text-decoration: none;
-}
-
-#home {
-    position: fixed;
-    left: 0;
-    top: 0;
 }
 
 form {
@@ -79,6 +118,10 @@ h3 {
     font-size: 1.5em;
     cursor: pointer;
     color: var(--bg-color);
+}
+
+.sbi {
+    filter: brightness(calc(1 + var(--text-brightness)))
 }
 
 /* Project Player */
@@ -118,6 +161,12 @@ h3 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+#projectList div a img {
+    aspect-ratio: 4/3;
+    width: 300px;
+    height: calc(300px * 3/4);
+}
+
 
 /* Scrollbar Styling */
 
