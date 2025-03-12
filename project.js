@@ -4,6 +4,8 @@ const turbowarpEnabled = urlParams.get('turbowarp');
 var author = "unknown";
 let blacklisted = false;
 let blacklist
+let image
+let title
 
 fetch(`https://corsproxy.io/?url=https://pastebin.com/raw/U0nRPz8J`)
     .then(response => response.json())
@@ -28,7 +30,8 @@ fetch(`https://trampoline.turbowarp.org/api/projects/${id}`)
         document.getElementById('loves').innerHTML = data.stats.loves;
         document.getElementById('favorites').innerHTML = data.stats.favorites;
         document.getElementById('remixes').innerHTML = data.stats.remixes;
-
+        image = data.image;
+        title = data.title;
         const iframe = document.getElementById('project');
         iframe.src = iframe.src.replace('{{id}}', id);
 
@@ -60,7 +63,11 @@ fetch(`https://trampoline.turbowarp.org/api/projects/${id}`)
                 console.log("Switched to TurboWarp.");
             }
             });
-
+            if (["Pugsbyy", "RobloxMaster671", "prodforer"].includes(author)) {
+                document.getElementById('authorcontainer').classList.add('glowText');
+                document.getElementById('author').classList.add('glowText');
+                document.getElementById('title').classList.add('glowText');
+            }
             // Add event listener for the checkbox
             const turbowarpCheckbox = document.getElementById('Turbowarp');
             turbowarpCheckbox.addEventListener('change', function() {
@@ -82,3 +89,27 @@ fetch(`https://corsproxy.io/?url=https://jeffalo.net/api/nfe/?project=${id}`)
         document.getElementById('rating').innerHTML = data.status.replace(/\n/g, '<br>');
     })
     .catch(error => console.error('unknown', error));
+
+function keep() {
+    const cookieValue = getCookie('keep');
+    if (cookieValue) {
+        const data = JSON.parse(cookieValue);
+        console.log('Title:', title);
+        console.log('Image:', image);
+        if (data.find(project => project.id === id)) {
+            const index = data.findIndex(project => project.id === id);
+            if (index !== -1) {
+                data.splice(index, 1);
+                document.cookie = `keep=${JSON.stringify(data)}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+                alert('Project removed from saved list');
+                return;
+            }
+            return;
+        }
+        data.push({ id, title, image });
+        document.cookie = `keep=${JSON.stringify(data)}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+    } else {
+        document.cookie = `keep=${JSON.stringify([{ id, title, image }])}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+    }
+    alert('Project saved');
+}

@@ -10,13 +10,20 @@
     <script src="global.js"></script>
 </head>
 <body>
-    <h1 id="name">LOADING NAME</h1>
-    <div id="info">
-        <h2>About me</h2>
-        <p id="description">LOADING ABOUT ME</p>
-        <h2>What I'm working on</h2>
-        <p id="workingon">LOADING WORKINGON</p>
+    <h1><img id="icon" src="https://cdn2.scratch.mit.edu/get_image/user/default_60x60.png" height="48px" style="transform: translateY(10px);"> <b id="name">LOADING NAME</b></h1>
+    <div id="info" style="display: flex;">
+        <sect style="width: 49vw;"><h2>About me</h2>
+        <p id="description">LOADING ABOUT ME</p></sect>
+        <sect style="width: 49vw;"><h2>What I'm working on</h2>
+        <p id="workingon">LOADING WORKINGON</p></sect>
     </div>
+    <h2>Created Projects</h2>
+    <div id="projectList"></div>
+    <center><button id="more" class="button" onclick="offset += 20; loadMore()"><img src="images/down.svg"></button></center>
+    <h2>Favorite Projects</h2>
+    <div id="favoriteProjectList" class="projectList"></div>
+    <center><button id="more" class="button" onclick="foffset += 20; loadMoreFavorites()"><img src="images/down.svg"></button></center>
+
     <p>Profile viewer in beta.</p>
 </body>
 </html>
