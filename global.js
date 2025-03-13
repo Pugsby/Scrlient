@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error loading global.html:', error))
         .then(() => {
             const themeButton = document.getElementById('theme');
-            if (themeButton) {
-                themeButton.addEventListener('click', function() {
-                    document.body.classList.toggle('darkMode');
-                    document.body.classList.toggle('lightMode');
-                    const currentTheme = document.body.classList.contains('darkMode') ? 'darkMode' : 'lightMode';
-                    setCookie('theme', currentTheme, 365);
-                });
-            }
+            //if (themeButton) {
+            //    themeButton.addEventListener('click', function() {
+            //        document.body.classList.toggle('darkMode');
+            //        document.body.classList.toggle('lightMode');
+            //        const currentTheme = document.body.classList.contains('darkMode') ? 'darkMode' : 'lightMode';
+            //        setCookie('theme', currentTheme, 365);
+            //    });
+            //}
         });
 });
 
@@ -43,4 +43,9 @@ function getCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+}
+
+function setTheme(name) {
+    document.body.className = name;
+    setCookie('theme', name, 365);
 }

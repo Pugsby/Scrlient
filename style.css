@@ -1,26 +1,69 @@
+/* Themes */
+
+@font-face {
+    font-family: weezer;
+    src: url(weezerfont.ttf);
+}
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body {
+    --font: "Rubik", "Roboto", sans-serif; /* Default font */
+    --logo: url("images/favicon.svg"); /* Default logo */
+}
+.darkMode {
+    --bg-color: #2c2a2c;
+    --text-color: #9b59b6;
+    --alt-text-color: #8e44ad;
+    --alt-bg-color: #3d3b3d;
+    --text-brightness: 1;
+}
+
+.lightMode {
+    --bg-color: #e2e2e2;
+    --text-color: #1f2961;
+    --alt-text-color: #422c42;
+    --alt-bg-color: #d1d1d1;
+    --text-brightness: -1;
+}
+
+
+.scarletMode {
+    --bg-color: #312c2c; 
+    --text-color: #b65959;
+    --alt-text-color: #ad4444;
+    --alt-bg-color: #3d3b3d;
+    --text-brightness: 1;
+    --logo: url("images/scarlet.svg");
+}
+
+.navyBlueMode {
+    --bg-color: #2c2a2c;
+    --text-color: #2f3a79;
+    --alt-text-color: #0e0d50;
+    --alt-bg-color: #3d3b3d;
+    --text-brightness: 1;
+    --logo: url("images/navy.svg");
+}
+
+.weezerMode {
+    --bg-color: #189BCC;
+    --text-color: #000000;
+    --alt-text-color: #1e1d53;
+    --alt-bg-color: #02c8d6;
+    --text-brightness: 1;
+    --font: 'weezer', 'Roboto', sans-serif;
+    --logo: url("images/weezer.svg");
+}
+
+
+
 /* Global */
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font);
     transition: all 200ms;
-}
-
-.darkMode {
-    --bg-color: #2c2a2c;  /* A slightly lighter shade for better contrast */
-    --text-color: #9b59b6; /* A softer purple for readability */
-    --alt-text-color: #8e44ad; /* A more muted alternative text color */
-    --alt-bg-color: #3d3b3d; /* A slightly darker shade for better contrast */
-    --text-brightness: 1; /* A brighter image for better visibility */
-}
-
-.lightMode {
-    --bg-color: #e2e2e2;  /* A slightly darker shade for better contrast */
-    --text-color: #1f2961; /* A softer blue for readability */
-    --alt-text-color: #422c42; /* A more muted alternative text color */
-    --alt-bg-color: #d1d1d1; /* A slightly lighter shade for better contrast */
-    --text-brightness: -1; /* A normal image for better visibility */
 }
 
 #sidebar {

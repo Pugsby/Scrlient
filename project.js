@@ -113,3 +113,19 @@ function keep() {
     }
     alert('Project saved');
 }
+
+function love(token, token2) {
+    fetch(`https://api.scratch.mit.edu/proxy/projects/${id}/loves/user/pugsbyy`, {
+        method: 'POST',
+        headers: {
+            'X-Token': token,
+            'X-CSRFToken': token2,
+        },
+        // mode: 'no-cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Project liked');
+    })
+    .catch(error => console.error('Error liking project:', error));
+}
